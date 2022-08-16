@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.1.xsd"
+default-init-method="myInit" default-destroy-method="myDestroy">
+
+<!--constructor injection -->
+<!--    <bean id="triangle" class="com.springpractice.tutorial.Triangle">-->
+<!--        <property name="type" value="equilateral"></property>-->
+<!--        <constructor-arg type="String" index="0" value="equilateral"></constructor-arg>-->
+<!--        <constructor-arg type="int" index="0" value="20"></constructor-arg>-->
+<!--    </bean>-->
+
+<!--    Object injection -->
+<!--    <bean id="triangle" class="com.springpractice.tutorial.Triangle2">-->
+<!--        <property name="pointA" ref="pointA"></property>-->
+<!--        <property name="pointB">-->
+<!--            <bean class="com.springpractice.tutorial.Point">-->
+<!--                <property name="x" value="0"></property>-->
+<!--                <property name="y" value="20"></property>-->
+<!--            </bean>-->
+
+<!--        </property>-->
+<!--        <property name="pointC" ref="pointC"></property>-->
+<!--    </bean>-->
+
+<!--    Initializing Collections-->
+    <bean id="parentTriangle" class="com.springpractice.tutorial.Triangle2" autowire="byName">
+        <property name="points">
+            <list>
+                <ref bean="pointA"></ref>
+            </list>
+        </property>
+    </bean>
+    <bean id="triangle" class="com.springpractice.tutorial.Triangle2" parent="parentTriangle" autowire="byName" >
+        <property name="points">
+            <list merge="true">
+                <ref bean="pointB"></ref>
+                <ref bean="pointC"></ref>
+            </list>
+        </property>
+    </bean>
+
+<!--    <bean id="circle" class="com.springpractice.tutorial.Circle" >-->
+<!--    </bean>-->
+
+    <bean id="pointA" class="com.springpractice.tutorial.Point">
+        <qualifier value="circleRelated"></qualifier>
+        <property name="x" value="${pointA.pointX}"></property>
+        <property name="y" value="${pointA.pointY}"></property>
+    </bean>
+
+    <bean id="pointB" class="com.springpractice.tutorial.Point">
+        <property name="x" value="0"></property>
+        <property name="y" value="30"></property>
+    </bean>
+
+    <bean id="pointC" class="com.springpractice.tutorial.Point">
+        <property name="x" value="-20"></property>
+        <property name="y" value="0"></property>
+    </bean>
+
+    <bean class="com.springpractice.tutorial.DisplayNameBeanPostProcessor"></bean>
+<!--    <bean class="com.springpractice.tutorial.DisplayNameBeanFactoryPostProcessor"></bean>-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="pointsData.properties"></property>
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>mymessages</value>
+            </list>
+        </property>
+    </bean>
+
+    <context:annotation-config></context:annotation-config>
+    <context:component-scan base-package="com.springpractice.tutorial"></context:component-scan>
+</beans>
