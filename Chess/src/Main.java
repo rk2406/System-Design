@@ -11,6 +11,7 @@ public class Main {
             System.out.println("Enter destination square");
             String dest= sc.next();
             Moves.makeMove(src,dest);
+            if(src.equals("Exit") || dest.equals("Exit")) break;
         }
 
     }

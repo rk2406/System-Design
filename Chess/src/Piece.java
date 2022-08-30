@@ -112,14 +112,24 @@ public class Piece {
     static List<int[]> getRookValidMoves(int srcX, int srcY){
         List<int[]> allValidSquares= new ArrayList<>();
 
-        for(int i=0;i<Board.size;i++){
-            if(!isEmptySquare(i,srcY)) break;
+        for(int i=srcX+1;i<Board.size;i++){
             if(isValidSquare(i,srcY) ) allValidSquares.add(new int[]{i,srcY});
+            if(!isEmptySquare(i,srcY)) break;
         }
 
-        for(int i=0;i<Board.size;i++){
-            if(!isEmptySquare(srcX,i)) break;
+        for(int i=srcY+1;i<Board.size;i++){
             if(isValidSquare(srcX,i)) allValidSquares.add(new int[]{srcX,i});
+            if(!isEmptySquare(srcX,i)) break;
+        }
+
+        for(int i=srcX-1;i>=0;i--){
+            if(isValidSquare(i,srcY)) allValidSquares.add(new int[]{i,srcY});
+            if(!isEmptySquare(i,srcY)) break;
+        }
+
+        for(int i=srcY-1;i>=0;i--){
+            if(isValidSquare(srcX,i)) allValidSquares.add(new int[]{srcX,i});
+            if(!isEmptySquare(srcX,i)) break;
         }
 
         return  allValidSquares;
