@@ -5,7 +5,6 @@ import pub_sub_queue.handlers.SubscriberWorker;
 import pub_sub_queue.handlers.TopicHandler;
 import pub_sub_queue.models.Message;
 import pub_sub_queue.models.Topic;
-import pub_sub_queue.models.TopicSubscriber;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,8 +23,7 @@ public class Queue {
     }
 
     public void subscribe(@NonNull final Topic topic, @NonNull final ISubscriber iSubscriber){
-        TopicSubscriber topicSubscriber= new TopicSubscriber(iSubscriber);
-        topic.addSubscribers(topicSubscriber);
+        topic.addSubscribers(iSubscriber);
         System.out.println(iSubscriber.getId()+" subscribed to topic "+topic.getTopicName());
     }
 
@@ -37,9 +35,9 @@ public class Queue {
 
     public void resetOffset(@NonNull Topic topic, @NonNull ISubscriber iSubscriber, @NonNull Integer newOffset){
         SubscriberWorker subscriberWorker = topicProcessors.get(topic.getTopicId()).getWorkers().get(iSubscriber.getId());
-        TopicSubscriber topicSubscriber= subscriberWorker.getTopicSubscriber();
+        ISubscriber topicSubscriber= subscriberWorker.getTopicSubscriber();
         topicSubscriber.getOffset().set(newOffset);
 
-        System.out.println("Subscriber "+topicSubscriber.getISubscriber().getId()+ " set to "+topicSubscriber.getOffset().get());
+        System.out.println("Subscriber "+iSubscriber.getId()+ " set to "+topicSubscriber.getOffset().get());
     }
 }

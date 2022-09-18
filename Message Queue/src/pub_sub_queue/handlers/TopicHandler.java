@@ -1,8 +1,8 @@
 package pub_sub_queue.handlers;
 
 import lombok.Getter;
+import pub_sub_queue.ISubscriber;
 import pub_sub_queue.models.Topic;
-import pub_sub_queue.models.TopicSubscriber;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,13 +17,13 @@ public class TopicHandler {
     }
 
     public void publish(){
-        for(TopicSubscriber subscriber: topic.getSubscribers()){
+        for(ISubscriber subscriber: topic.getSubscribers()){
             startWorker(subscriber);
         }
     }
 
-    private void startWorker(TopicSubscriber subscriber){
-        final String id= subscriber.getISubscriber().getId();
+    private void startWorker(ISubscriber subscriber){
+        final String id= subscriber.getId();
         if(!workers.containsKey(id)){
             final SubscriberWorker subscriberWorker= new SubscriberWorker(this.topic, subscriber);
             workers.put(id, subscriberWorker);

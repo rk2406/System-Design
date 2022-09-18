@@ -2,16 +2,16 @@ package pub_sub_queue.handlers;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
+import pub_sub_queue.ISubscriber;
 import pub_sub_queue.models.Message;
 import pub_sub_queue.models.Topic;
-import pub_sub_queue.models.TopicSubscriber;
 
 @Getter
 public class SubscriberWorker implements Runnable{
     private final Topic topic;
-    private final TopicSubscriber topicSubscriber;
+    private final ISubscriber topicSubscriber;
 
-    public SubscriberWorker(Topic topic, TopicSubscriber topicSubscriber) {
+    public SubscriberWorker(Topic topic, ISubscriber topicSubscriber) {
         this.topic = topic;
         this.topicSubscriber = topicSubscriber;
     }
@@ -27,7 +27,7 @@ public class SubscriberWorker implements Runnable{
                 }
                 else{
                     Message message= topic.getMessages().get(currOffset);
-                    topicSubscriber.getISubscriber().processMessage(message);
+                    topicSubscriber.processMessage(message);
 
                     topicSubscriber.getOffset().compareAndSet(currOffset,currOffset+1);
                 }
