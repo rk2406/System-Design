@@ -1,1 +1,129 @@
-<mxfile host="app.diagrams.net" modified="2022-10-10T17:57:39.654Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" version="20.4.0" etag="FKmhiL_cqw6t3uVfXnd9" type="github"><diagram id="-l6-l5AFiRFOFLrYTzR6">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2022-10-10T19:51:09.597Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36" etag="p1Lm8U0CBgVibeS0y1YE" version="20.4.0" type="github" pages="2">
+  <diagram id="-l6-l5AFiRFOFLrYTzR6" name="Page-1">
+    <mxGraphModel dx="946" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SV_D9GWSlm2mcVXoUpCV-1" target="SV_D9GWSlm2mcVXoUpCV-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-1" value="" style="shape=actor;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SV_D9GWSlm2mcVXoUpCV-2" target="SV_D9GWSlm2mcVXoUpCV-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-2" value="ui" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SV_D9GWSlm2mcVXoUpCV-4" target="SV_D9GWSlm2mcVXoUpCV-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-4" value="backend" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-8" value="allows user to enter the long url and gets back the shortened one.&lt;br&gt;&lt;br&gt;redirects the short url to original url after getting original url from backend.&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="270" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-11" value="convert the long url into a unique short url using some algo and store it into a datastore&lt;br&gt;&lt;br&gt;fetches the original url corresponding to the short url from the datastore&amp;nbsp;&lt;br&gt;&lt;br&gt;pick any random 6 characters from character set and checking if it is already present or not&amp;nbsp; and send it to datastore." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="350" y="230" width="140" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-12" value="stores the original url corresponding to the short url generated ." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="530" y="250" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-13" value="Text" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="390" y="370" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-14" value="&lt;h1&gt;Solution of Constraints&lt;/h1&gt;&lt;p&gt;Run a scheduler every n days/ hours to clear out the expired data based on epoch time. This will take care of TTL which might not be an added feature in some datastores like mySql or mongoDb.&lt;/p&gt;&lt;p&gt;Each of these components is horizontally scalable.&lt;/p&gt;&lt;p&gt;All the arrows will have some kind of proxy servers or load balancing set up. Whichever component you want to scale horizontally, might want to have a load balancer before it. For datastores, they have their own replication logic.&lt;/p&gt;&lt;p&gt;Since it is read heavy and not that write heavy ,we can make good use of cache&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="510" width="660" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-15" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;lid=0;" vertex="1" parent="1">
+          <mxGeometry x="590" y="170" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="SV_D9GWSlm2mcVXoUpCV-6" value="datastore" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="550" y="150" width="60" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="o3rT96RfzS6WZFuLMHzH" name="AWS">
+    <mxGraphModel dx="1183" dy="1937" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-1" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.user;" vertex="1" parent="1">
+          <mxGeometry x="70" y="120" width="47.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-2" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="190" y="106" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-3" value="S3 will host the static UI" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="190" y="240" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-4" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#3F8624;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.lambda_function;" vertex="1" parent="1">
+          <mxGeometry x="410" y="106" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-5" value="Run the backend logic." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="414" y="220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-6" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#4D72F3;gradientDirection=north;fillColor=#3334B9;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;" vertex="1" parent="1">
+          <mxGeometry x="680" y="-20" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-7" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.rds;fillColor=#2E73B8;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="680" y="159" width="72" height="81" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-8" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="156" as="sourcePoint" />
+            <mxPoint x="560" y="156" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-9" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.ec2;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="414" y="290" width="76.5" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-11" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.fargate;" vertex="1" parent="1">
+          <mxGeometry x="405" y="-10" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-13" value="keep the port of ec2 or fargate instances open to public.&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="373" y="400" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-14" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.classic_load_balancer;fillColor=#F58534;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="20" width="69" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-15" value="send request to ALB and it sends it to target group." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="268" y="-50" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-16" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=#FF4F8B;gradientDirection=north;fillColor=#BC1356;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" vertex="1" parent="1">
+          <mxGeometry x="285.5" y="196" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-17" value="send request to apigw and it will send the endpoint to the target ." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="321.5" width="90" height="48.5" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-18" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="290" width="230" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-19" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.rds_db_instance;fillColor=#2E73B8;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="670.25" y="321.5" width="49.5" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-20" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.rds_db_instance_standby_multi_az;fillColor=#2E73B8;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="620" y="410" width="49.5" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-21" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.rds_db_instance_standby_multi_az;fillColor=#2E73B8;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="740" y="410" width="49.5" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="kc2Di4E2kS4eCbmrCoJG-22" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="150" as="sourcePoint" />
+            <mxPoint x="190" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="znP0xXmVT3M7nRu53QM1-2" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/databases/Cache_Redis.svg;" vertex="1" parent="1">
+          <mxGeometry x="570" y="80" width="86.15" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="znP0xXmVT3M7nRu53QM1-3" value="Cache" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="573" y="176" width="60" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
