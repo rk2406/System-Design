@@ -1,0 +1,16 @@
+20231231	18:30:10	f2f575d1-db4a-4e4d-b9f3-195482c8f3b9	ReferenceError: data is not defined
+20231231	18:30:10	7318f8f9-798a-4382-aa59-af14bb924339	ReferenceError: data is not defined
+20231231	19:48:08	a073d6d5-0726-4715-92d8-c045658745f1	Error: Not allowed by CORS
+20231231	20:50:19	5699b80e-7c03-494c-abca-46df8758d8ce	Error: Cannot set headers after they are sent to the client
+20231231	20:50:56	72b723ab-f1b7-4a28-bc0d-b67ad42ef791	Error: Cannot set headers after they are sent to the client
+20231231	20:52:34	ce4dc62f-6d98-48b0-befd-18f9ad3e563c	Error: Cannot set headers after they are sent to the client
+20231231	20:52:34	6c6de2ae-a2cf-4021-8bc6-e11faa026740	Error: Cannot set headers after they are sent to the client
+20231231	21:31:37	d34f2eef-1a14-47d8-b0a2-0e8d6b3c726f	TypeError: Cannot read properties of undefined (reading '0')
+20231231	21:49:07	862f0e8b-e772-46a5-9b63-600c38d022bb	ReferenceError: path is not defined
+20231231	21:49:13	74a2e28b-c551-4957-9070-8ec8ca073286	Error: Cannot set headers after they are sent to the client
+20231231	21:49:19	3f71f861-1a13-488b-aa91-8f547e332f71	ReferenceError: path is not defined
+20231231	21:49:48	1f17721e-5529-470f-bb03-3a9139030bd7	Error: Cannot set headers after they are sent to the client
+20240101	23:37:12	98f58920-b3c8-4ea6-a299-8ff907bc7de4	ReferenceError: path is not defined
+20240102	12:38:45	c2d3ac1e-407c-447a-ab5e-2d1595b60101	TypeError: Cannot read properties of undefined (reading 'map')
+20240102	12:41:03	62ce32f8-61f8-4297-ab28-c3ea0683b1d6	TypeError: Cannot read properties of undefined (reading 'map')
+20240103	11:10:20	c2f975ba-cd81-4082-87b2-4ecb6b9d92ac	Error: Cannot set headers after they are sent to the client
